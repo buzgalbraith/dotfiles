@@ -122,3 +122,4 @@ eval "$(pyenv init - bash)"
 ## adding alias for hatch and poetry
 alias hatch="python3 -m hatch"
 alias poetry="python3 -m poetry"
+alias g="git"

@@ -9,6 +9,7 @@ declare -A FILES_TO_SYMLINK=(
     ["config/.gitconfig"]=".gitconfig"
     ["config/.Xmodmap"]=".Xmodmap"
     ["config/.tmux.conf"]=".tmux.conf"
+    ["config/vscode/settings.json"]=".config/Code/User/settings.json"
     ["config/vscode/keybindings.json"]=".config/Code/User/keybindings.json"
     ["config/hatch/config.toml"]=".config/hatch/config.toml"
 )

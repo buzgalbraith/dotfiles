@@ -124,3 +124,7 @@ alias hatch="python3 -m hatch"
 alias poetry="python3 -m poetry"
 ## adding shortened alias for git
 alias g="git"
+## adding an alias for starting docker desktop deamon 
+alias ds="systemctl --user start docker-desktop"
+## adding alias for starting docker-desktop deamon 
+alias ds="systemctl --user start docker-desktop"

@@ -128,3 +128,12 @@ alias g="git"
 alias ds="systemctl --user start docker-desktop"
 ## adding alias for starting docker-desktop deamon 
 alias ds="systemctl --user start docker-desktop"
+## setting edditor 
+export EDITOR=/usr/bin/vim
+## changing default bindings for fuzzy find 
+source /usr/share/doc/fzf/examples/key-bindings.bash
+## sourcing rust env 
+. "$HOME/.cargo/env"
+## broot set up 
+source $HOME/.config/broot/launcher/bash/br
+

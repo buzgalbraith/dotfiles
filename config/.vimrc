@@ -1,4 +1,4 @@
-" Comments in Vimscript start with a `"`.
+" Comments in Vimscript start with a `"`
 
 " If you open this file in Vim, it'll be syntax highlighted for you.
 
@@ -82,4 +82,11 @@ inoremap <Down>  <ESC>:echoe "Use j"<CR>
 nmap <Leader>/ <Plug>(easymotion-sn)
 xmap <Leader>/ <Plug>(easymotion-sn)
 omap <Leader>/ <Plug>(easymotion-tn)
+" map control y and control C to copy to buffer
+vnoremap <C-C> "+y
+vnoremap <C-y> "+y
+
+" setting for vim-commentary plugin that is used for commenting multiple lines at once
+filetype plugin indent on
+
 

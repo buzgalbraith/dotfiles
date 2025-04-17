@@ -8,6 +8,7 @@
 	cm = commit 
 	unstage = reset HEAD --
 	last = log -1 HEAD
+	logp = log --graph --format='%cn %h %s'
 [init]
 	defaultBranch = main
 [filter "lfs"]

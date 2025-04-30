@@ -89,4 +89,12 @@ vnoremap <C-y> "+y
 " setting for vim-commentary plugin that is used for commenting multiple lines at once
 filetype plugin indent on
 
+"install plugins with vim-plug since compatible with older vim versions 
+call plug#begin()
 
+Plug 'tpope/vim-commentary'
+Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'mileszs/ack.vim' this requires that ack is installed which I dont want
+" to assume right now
+Plug 'preservim/nerdtree'
+call plug#end()

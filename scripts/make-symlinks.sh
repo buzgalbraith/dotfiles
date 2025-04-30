@@ -5,13 +5,9 @@ DOTFILES_DIR=$(pwd)
 TARGET_DIR=$HOME
 
 declare -A FILES_TO_SYMLINK=(
-    ["config/.bashrc"]=".bashrc"
     ["config/.gitconfig"]=".gitconfig"
-    ["config/.Xmodmap"]=".Xmodmap"
     ["config/.tmux.conf"]=".tmux.conf"
     ["config/.vimrc"]=".vimrc"
-    ["config/vscode/settings.json"]=".config/Code/User/settings.json"
-    ["config/vscode/keybindings.json"]=".config/Code/User/keybindings.json"
     ["config/hatch/config.toml"]=".config/hatch/config.toml"
     ["config/pypoetry/config.toml"]=".config/pypoetry/config.toml"
 )

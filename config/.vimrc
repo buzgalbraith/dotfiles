@@ -106,3 +106,7 @@ let g:ale_fix_on_save = 1
 " " Only lint on save (not every keystroke)
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_save = 1
+
+set background=light
+colorscheme rosepine
+

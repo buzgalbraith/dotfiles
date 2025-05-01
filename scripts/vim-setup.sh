@@ -25,3 +25,7 @@ git clone https://github.com/easymotion/vim-easymotion.git
 
 ## rose pine (neovim theme)
 git clone https://github.com/rose-pine/vim.git
+
+## adding ale 
+python3 -m pip install pylint --user
+git clone https://github.com/dense-analysis/ale.git

@@ -97,6 +97,12 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 "keybindings for fuzzy file finder
 nnoremap <C-p> :CtrlP<CR>
 
-" setting color theme 
-set background=light
-colorscheme rosepine
+"ale setup 
+let g:ale_linters = {
+\   'python': [ 'pylint']
+\}
+" " Enable automatic fixing on save (optional)
+let g:ale_fix_on_save = 1
+" " Only lint on save (not every keystroke)
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_save = 1

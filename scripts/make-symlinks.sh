@@ -5,6 +5,7 @@ DOTFILES_DIR=$(pwd)
 TARGET_DIR=$HOME
 
 declare -A FILES_TO_SYMLINK=(
+    ["config/.bashrc"]=".bashrc"
     ["config/.gitconfig"]=".gitconfig"
     ["config/.tmux.conf"]=".tmux.conf"
     ["config/.vimrc"]=".vimrc"

@@ -89,3 +89,14 @@ vnoremap <C-y> "+y
 " setting for vim-commentary plugin that is used for commenting multiple lines at once
 filetype plugin indent on
 
+"adding some keyboard shortcuts for nerd tree  
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+"keybindings for fuzzy file finder
+nnoremap <C-p> :CtrlP<CR>
+
+" setting color theme 
+set background=light
+colorscheme rosepine

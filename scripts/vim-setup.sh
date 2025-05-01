@@ -19,3 +19,9 @@ git clone https://github.com/mileszs/ack.vim.git
 
 ## file explorer 
 git clone https://github.com/preservim/nerdtree.git
+
+## easy motions 
+git clone https://github.com/easymotion/vim-easymotion.git
+
+## rose pine (neovim theme)
+git clone https://github.com/rose-pine/vim.git

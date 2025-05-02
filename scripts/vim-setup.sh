@@ -15,6 +15,7 @@ git clone https://tpope.io/vim/commentary.git
 git clone https://github.com/ctrlpvim/ctrlp.vim.git
 
 ## code finer 
+curl https://beyondgrep.com/ack-v3.8.1 > ~/.local/bin/ack && chmod 0755 ~/.local/bin/ack 
 git clone https://github.com/mileszs/ack.vim.git
 
 ## file explorer 

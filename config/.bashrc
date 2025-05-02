@@ -136,4 +136,7 @@ source /usr/share/doc/fzf/examples/key-bindings.bash
 . "$HOME/.cargo/env"
 ## broot set up 
 source $HOME/.config/broot/launcher/bash/br
-
+## add go to path 
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=${HOME}/go
+export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin

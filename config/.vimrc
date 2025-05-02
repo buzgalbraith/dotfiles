@@ -69,15 +69,15 @@ set mouse+=a
 " bad habit. The former is enforceable through a .vimrc, while we don't know
 " how to prevent the latter.
 " Do this in normal mode...
-" nnoremap <Left>  :echoe "Use h"<CR>
-" nnoremap <Right> :echoe "Use l"<CR>
-" nnoremap <Up>    :echoe "Use k"<CR>
-" nnoremap <Down>  :echoe "Use j"<CR>
+nnoremap <Left>  :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up>    :echoe "Use k"<CR>
+nnoremap <Down>  :echoe "Use j"<CR>
 " ...and in insert mode
-" inoremap <Left>  <ESC>:echoe "Use h"<CR>
-" inoremap <Right> <ESC>:echoe "Use l"<CR>
-" inoremap <Up>    <ESC>:echoe "Use k"<CR>
-" inoremap <Down>  <ESC>:echoe "Use j"<CR>
+inoremap <Left>  <ESC>:echoe "Use h"<CR>
+inoremap <Right> <ESC>:echoe "Use l"<CR>
+inoremap <Up>    <ESC>:echoe "Use k"<CR>
+inoremap <Down>  <ESC>:echoe "Use j"<CR>
 " easy motion set up 
 nmap <Leader>/ <Plug>(easymotion-sn)
 xmap <Leader>/ <Plug>(easymotion-sn)
@@ -94,8 +94,10 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 
-"keybindings for fuzzy file finder
+"keybindings for fuzzy file finder, control p searches the current dir leader
+"p lets you enter a path to search
 nnoremap <C-p> :CtrlP<CR>
+nnoremap <leader>p :execute 'CtrlP ' . input('CtrlP directory: ', '', 'dir')<CR>
 
 "ale setup 
 let g:ale_linters = {
@@ -116,3 +118,16 @@ set cursorcolumn
 
 " jedi vim switch how new code is pulled up
 let g:jedi#use_splits_not_buffers = "right"
+" have control p and nerd tree show hidden files
+let g:ctrlp_show_hidden = 1
+let NERDTreeShowHidden=1
+" keyboard shortcut for vim ack 
+nnoremap <leader>a :Ack<space>
+
+"fix vormating issues when pasting from buffer while tmux is active
+if &term =~ '^tmux'
+	let &t_BE="\<Esc>[?2004h"
+	let &t_BD="\<Esc>[?2004l"
+	let &t_PS="\<Esc>[200~"
+	let &t_PE="\<Esc>[201~"
+endif

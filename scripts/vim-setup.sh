@@ -29,3 +29,9 @@ git clone https://github.com/rose-pine/vim.git
 ## adding ale 
 python3 -m pip install pylint --user
 git clone https://github.com/dense-analysis/ale.git
+
+## adding jedi
+git clone https://github.com/davidhalter/jedi-vim.git
+
+## adding vim-tmux navigator
+git clone https://github.com/christoomey/vim-tmux-navigator.git

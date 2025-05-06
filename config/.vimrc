@@ -131,3 +131,12 @@ if &term =~ '^tmux'
 	let &t_PS="\<Esc>[200~"
 	let &t_PE="\<Esc>[201~"
 endif
+
+"" adding spell check for US english
+let g:asyncomplete_auto_popup = 0
+let g:asyncomplete_sources = ['spell']
+set spell
+set spelllang=en_us
+nnoremap <leader>. z=
+"" need to set typos to be in a certain color so they work with the theme 
+highlight SpellBad term=underline cterm=underline ctermfg=Red gui=undercurl guisp=Red

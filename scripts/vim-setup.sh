@@ -36,3 +36,7 @@ git clone https://github.com/davidhalter/jedi-vim.git
 
 ## adding vim-tmux navigator
 git clone https://github.com/christoomey/vim-tmux-navigator.git
+
+## adding vim-surround 
+git clone https://github.com/tpope/vim-surround.git
+

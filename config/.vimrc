@@ -125,4 +125,7 @@ nnoremap <leader>sv :vsplit<CR>
 "" keyboard shortcuts for buffers 
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
-
+""merge the current and previous buffer into one vertically
+nnoremap <Leader>sb :vert sb #<CR> 
+"" paste on a new line by default
+nnoremap P O<Esc>p

@@ -15,6 +15,7 @@ git clone https://tpope.io/vim/commentary.git
 git clone https://github.com/ctrlpvim/ctrlp.vim.git
 
 ## code finer 
+curl https://beyondgrep.com/ack-v3.8.1 > ~/.local/bin/ack && chmod 0755 ~/.local/bin/ack 
 git clone https://github.com/mileszs/ack.vim.git
 
 ## file explorer 
@@ -29,3 +30,13 @@ git clone https://github.com/rose-pine/vim.git
 ## adding ale 
 python3 -m pip install pylint --user
 git clone https://github.com/dense-analysis/ale.git
+
+## adding jedi
+git clone https://github.com/davidhalter/jedi-vim.git
+
+## adding vim-tmux navigator
+git clone https://github.com/christoomey/vim-tmux-navigator.git
+
+## adding vim-surround 
+git clone https://github.com/tpope/vim-surround.git
+

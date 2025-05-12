@@ -9,7 +9,7 @@ data = "~/.local/share/hatch"
 cache = "~/.cache/hatch"
 
 [dirs.env]
-virtual = "./.venv"
+virtual = "/scratch/w.galbraith/virtual_envs/"
 
 
 [projects]

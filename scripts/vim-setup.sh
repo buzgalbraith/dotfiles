@@ -40,3 +40,9 @@ git clone https://github.com/christoomey/vim-tmux-navigator.git
 ## adding vim-surround 
 git clone https://github.com/tpope/vim-surround.git
 
+## adding vim word-motion, which makes the w key work better with out messing up linting or syntax highlighting
+git clone https://github.com/chaoren/vim-wordmotion.git
+
+## adding spelunker to spell check code 
+git clone https://github.com/kamykn/spelunker.vim.git
+

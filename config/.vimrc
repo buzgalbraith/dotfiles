@@ -129,3 +129,6 @@ nnoremap <S-Tab> :bprevious<CR>
 nnoremap <Leader>sb :vert sb #<CR> 
 "" paste on a new line by default
 nnoremap P O<Esc>p
+
+"" show 5 lines above or bellow cursor if possible
+set scrolloff=5 

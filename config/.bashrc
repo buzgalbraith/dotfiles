@@ -140,3 +140,15 @@ source $HOME/.config/broot/launcher/bash/br
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=${HOME}/go
 export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin
+## helper method for activating python virtual environments
+function act() {
+  local f
+  f=$(find ./ -maxdepth 5 -type f -name 'activate' | head -n 1)
+  if [ -n "$f" ]; then
+    echo "activating ${f}"
+    source "$f"
+  else
+    echo "No activate script found."
+  fi
+}
+

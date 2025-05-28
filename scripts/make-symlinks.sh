@@ -14,6 +14,7 @@ declare -A FILES_TO_SYMLINK=(
     ["config/vscode/keybindings.json"]=".config/Code/User/keybindings.json"
     ["config/hatch/config.toml"]=".config/hatch/config.toml"
     ["config/pypoetry/config.toml"]=".config/pypoetry/config.toml"
+    ["methods"]=".methods"
 )
 
 # Create symlinks
@@ -23,6 +24,7 @@ for SRC in "${!FILES_TO_SYMLINK[@]}"; do
     SRC_PATH="$DOTFILES_DIR/$SRC"
 
     # Create the parent directory if it doesn't exist
+    echo $DEST_PATH
     mkdir -p "$(dirname "$DEST_PATH")"
 
     # Remove existing file/symlink if it exists

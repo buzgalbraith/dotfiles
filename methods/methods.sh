@@ -36,4 +36,37 @@ function act() {
         source "$path"
     fi
 }
+## short cut for adding to known hosts 
+function ssh_add(){
+	INPUT=$1
+	CUSTOM_ALIAS=$2
+	IDENTITY_FILE=${3:-~/.ssh/id_rsa}
 
+	if [[ -z "$INPUT" ]]; then
+	    echo "Usage: $0 user@hostname"
+	    exit 1
+	fi
+
+	USER=$(echo "$INPUT" | cut -d@ -f1)
+	HOST=$(echo "$INPUT" | cut -d@ -f2)
+	SHORT_HOST=${CUSTOM_ALIAS:-$(echo "$HOST" | cut -d. -f1)}
+
+	if grep -q "Host $SHORT_HOST" ~/.ssh/config; then
+	    echo "Host $SHORT_HOST already exists in SSH config."
+	else
+	    echo "Copying SSH key to $INPUT..."
+	    ssh-copy-id -i "${IDENTITY_FILE}.pub" "$INPUT"
+	    echo "Adding $SHORT_HOST to SSH config..."
+	    cat <<EOF >> ~/.ssh/config
+
+
+Host $SHORT_HOST
+	HostName $HOST
+	User $USER
+	IdentityFile $IDENTITY_FILE
+	ForwardAgent yes
+	StrictHostKeyChecking no
+EOF
+		    echo "Added SSH config entry for $SHORT_HOST"
+	fi
+}

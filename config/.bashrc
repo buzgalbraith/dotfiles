@@ -140,30 +140,7 @@ source $HOME/.config/broot/launcher/bash/br
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=${HOME}/go
 export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin
-## helper method for activating python virtual environments
-# function act() {
-#   local f
-#   f=$(find ./ -maxdepth 5 -type f -name 'activate' | head -n 1)
-#   if [ -n "$f" ]; then
-#     echo "activating ${f}"
-#     source "$f"
-#   else
-#     echo "No activate script found."
-#   fi
-# }
 
-# alias act='python3 ~/.methods/act.py'
-function act() {
-    local path
-    local output
-        if [[ -n "$VIRTUAL_ENV" ]]; then
-        echo "Deactivating current virtual environment: $VIRTUAL_ENV"
-        deactivate
-    fi
-    output=$(python3 ~/.methods/act.py)
-    echo $output
-    path=$(echo "$output" | tail -n1 | awk '{print $NF}')  # get last word
-    if [ -e "$path" ]; then
-        source "$path"
-    fi
-}
+
+## source file with helper methods 
+source ~/.methods/methods.sh

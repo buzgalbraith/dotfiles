@@ -115,10 +115,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-## pyenv set up 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
 ## adding alias for hatch and poetry
 alias hatch="python3 -m hatch"
 alias poetry="python3 -m poetry"
@@ -130,17 +126,15 @@ alias ds="systemctl --user start docker-desktop"
 alias ds="systemctl --user start docker-desktop"
 ## setting edditor 
 export EDITOR=/usr/bin/vim
-## changing default bindings for fuzzy find 
-source /usr/share/doc/fzf/examples/key-bindings.bash
-## sourcing rust env 
-. "$HOME/.cargo/env"
-## broot set up 
-source $HOME/.config/broot/launcher/bash/br
 ## add go to path 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=${HOME}/go
 export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin
 
+## add ~/.local/bin to path
+export PATH=${PATH}:~/.local/bin
 
 ## source file with helper methods 
 source ~/.methods/methods.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

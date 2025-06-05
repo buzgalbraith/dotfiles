@@ -2,47 +2,44 @@
 set -e
 
 ## make dir for plugins and cd into it  
-export pack_dir=~/.vim/pack/vendor/start/
-echo $pack_dir
+export pack_dir=~/.vim/pack/vendor/start
 mkdir -p $pack_dir
 cd $pack_dir
 
-## install plugins 
-## comentary for commending out code 
-git clone https://tpope.io/vim/commentary.git
 
-## fuzy finder 
-git clone https://github.com/ctrlpvim/ctrlp.vim.git
+declare -A git_links=(
+    ["commentary"]="https://tpope.io/vim/commentary.git" ## commentary for code commenting
+    ["ctrlp.vim"]="https://github.com/ctrlpvim/ctrlp.vim.git" ## fuzzy finder
+    ["ack.vim"]="https://github.com/mileszs/ack.vim.git" ## code search
+    ["nerdtree"]="https://github.com/preservim/nerdtree.git" ## file explorer
+    ["rose-pine"]="https://github.com/rose-pine/vim.git" ## rose-pine theme 
+    ["ale"]="https://github.com/dense-analysis/ale.git" ## ale for linting 
+    ["jedi"]="https://github.com/davidhalter/jedi-vim.git" ## jedi for python auto completion
+    ["vim-tmux"]="https://github.com/christoomey/vim-tmux-navigator.git" ## tmux integration
+    ["vim-surround"]="https://github.com/tpope/vim-surround.git" ## better motions for surrounding text
+    ["word-motion"]="https://github.com/chaoren/vim-wordmotion.git" ## sets the w action to respect _ and a few other quality of life changes
+    ["spelunker"]="https://github.com/kamykn/spelunker.vim.git" ## better spell check, and spell check in code.
+)
 
-## code finer 
-curl https://beyondgrep.com/ack-v3.8.1 > ~/.local/bin/ack && chmod 0755 ~/.local/bin/ack 
-git clone https://github.com/mileszs/ack.vim.git
+# ## install plugins 
+for plugin in "${!git_links[@]}"; do
+	git_link="${git_links[$plugin]}"
+	plug_path="$pack_dir/$plugin"
+	if [ ! -d $plug_path ]; then 
+		git clone $git_link $plug_path	
+	fi
+done
 
-## file explorer 
-git clone https://github.com/preservim/nerdtree.git
+## install other tools that support the vim packages
+## install fzf for fuzzy file finding 
+if [ ! -d ~/.fzf ]; then
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install
+fi
+## install ack for code searching
+if [ ! -f ~/.local/bin/ack ]; then
+	curl https://beyondgrep.com/ack-v3.8.1 > ~/.local/bin/ack && chmod 0755 ~/.local/bin/ack
+fi
 
-## easy motions 
-git clone https://github.com/easymotion/vim-easymotion.git
-
-## rose pine (neovim theme)
-git clone https://github.com/rose-pine/vim.git
-
-## adding ale 
+## install pylint package
 python3 -m pip install pylint --user
-git clone https://github.com/dense-analysis/ale.git
-
-## adding jedi
-git clone https://github.com/davidhalter/jedi-vim.git
-
-## adding vim-tmux navigator
-git clone https://github.com/christoomey/vim-tmux-navigator.git
-
-## adding vim-surround 
-git clone https://github.com/tpope/vim-surround.git
-
-## adding vim word-motion, which makes the w key work better with out messing up linting or syntax highlighting
-git clone https://github.com/chaoren/vim-wordmotion.git
-
-## adding spelunker to spell check code 
-git clone https://github.com/kamykn/spelunker.vim.git
-

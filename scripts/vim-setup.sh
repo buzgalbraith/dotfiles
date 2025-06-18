@@ -14,7 +14,7 @@ declare -A git_links=(
     ["nerdtree"]="https://github.com/preservim/nerdtree.git" ## file explorer
     ["rose-pine"]="https://github.com/rose-pine/vim.git" ## rose-pine theme 
     ["ale"]="https://github.com/dense-analysis/ale.git" ## ale for linting 
-    ["jedi"]="https://github.com/davidhalter/jedi-vim.git" ## jedi for python auto completion
+    ["jedi-vim"]="https://github.com/davidhalter/jedi-vim.git" ## jedi for python auto completion
     ["vim-tmux"]="https://github.com/christoomey/vim-tmux-navigator.git" ## tmux integration
     ["vim-surround"]="https://github.com/tpope/vim-surround.git" ## better motions for surrounding text
     ["word-motion"]="https://github.com/chaoren/vim-wordmotion.git" ## sets the w action to respect _ and a few other quality of life changes
@@ -26,7 +26,7 @@ for plugin in "${!git_links[@]}"; do
 	git_link="${git_links[$plugin]}"
 	plug_path="$pack_dir/$plugin"
 	if [ ! -d $plug_path ]; then 
-		git clone $git_link $plug_path	
+		git clone --recursive $git_link $plug_path	
 	fi
 done
 

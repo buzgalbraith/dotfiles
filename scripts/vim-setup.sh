@@ -19,6 +19,7 @@ declare -A git_links=(
     ["vim-surround"]="https://github.com/tpope/vim-surround.git" ## better motions for surrounding text
     ["word-motion"]="https://github.com/chaoren/vim-wordmotion.git" ## sets the w action to respect _ and a few other quality of life changes
     ["spelunker"]="https://github.com/kamykn/spelunker.vim.git" ## better spell check, and spell check in code.
+    ["vim-tmux-navigator"]="https://github.com/christoomey/vim-tmux-navigator.git" ## switch between vim and tmux panes with same keys
 )
 
 # ## install plugins 

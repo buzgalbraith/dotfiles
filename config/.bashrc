@@ -115,13 +115,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-## pyenv set up 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
-## adding alias for hatch and poetry
-alias hatch="python3 -m hatch"
-alias poetry="python3 -m poetry"
 ## adding shortened alias for git
 alias g="git"
 ## adding an alias for starting docker desktop deamon 
@@ -144,3 +137,5 @@ export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin
 
 ## source file with helper methods 
 source ~/.methods/methods.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

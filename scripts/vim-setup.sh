@@ -43,4 +43,4 @@ if [ ! -f ~/.local/bin/ack ]; then
 fi
 
 ## install pylint package
-python3 -m pip install pylint --user
+# python3 -m pip install pylint --user

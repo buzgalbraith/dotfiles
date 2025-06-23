@@ -123,8 +123,6 @@ alias ds="systemctl --user start docker-desktop"
 alias ds="systemctl --user start docker-desktop"
 ## setting edditor 
 export EDITOR=/usr/bin/vim
-## changing default bindings for fuzzy find 
-source /usr/share/doc/fzf/examples/key-bindings.bash
 ## sourcing rust env 
 . "$HOME/.cargo/env"
 ## broot set up 
@@ -137,5 +135,6 @@ export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin
 
 ## source file with helper methods 
 source ~/.methods/methods.sh
+
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

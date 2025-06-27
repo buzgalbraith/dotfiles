@@ -70,3 +70,27 @@ EOF
 		    echo "Added SSH config entry for $SHORT_HOST"
 	fi
 }
+## function to save a full zenodo directory 
+zenodo_pull() {
+    local record_id="$1"
+    local json_file="zenodo_record_${record_id}.json"
+
+    # Fetch metadata
+    curl -s "https://zenodo.org/api/records/${record_id}" -o "$json_file" || {
+        echo "Failed to fetch metadata for record ${record_id}"
+        return 1
+    }
+
+    # Extract and sanitize directory name
+    local dir_name
+    dir_name=$(jq -r '.metadata.title' "$json_file" | tr -cd '[:alnum:]_-' | tr ' ' '_')
+
+    mkdir -p "$dir_name"
+    # Download all files
+    jq -r '.files[] | "\(.links.self) \(.key)"' "$json_file" | \
+    while IFS=' ' read -r url filename; do
+        echo "Downloading $filename ..."
+        curl -sL "$url" -o "${dir_name}/${filename}" || echo "Failed: $filename"
+    done
+    rm "$json_file"
+}

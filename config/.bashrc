@@ -135,6 +135,13 @@ export GOPATH=${HOME}/go
 export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin
 
 
+# add cuda to path
+export CUDA_HOME=/usr/local/cuda
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+export PATH=$PATH:$CUDA_HOME/bin
+# add llama cpp to path
+export PATH=$PATH:/home/buzgalbraith/workspace/self_host/llama.cpp/build/bin
+
 ## source file with helper methods 
 source ~/.methods/methods.sh
 

@@ -39,8 +39,9 @@ if [ ! -d ~/.fzf ]; then
 fi
 ## install ack for code searching
 if [ ! -f ~/.local/bin/ack ]; then
+	mkdir -p ~/.local/bin/
 	curl https://beyondgrep.com/ack-v3.8.1 > ~/.local/bin/ack && chmod 0755 ~/.local/bin/ack
 fi
 
 ## install pylint package
-python3 -m pip install pylint --user
+# python3 -m pip install pylint --user

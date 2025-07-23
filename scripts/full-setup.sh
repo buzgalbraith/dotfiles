@@ -13,7 +13,5 @@ bash scripts/make-symlinks.sh
 ## remap keys 
 bash scripts/remap.sh
 
-## install gui packages
-bash scripts/install-gui-packages.sh
 
 

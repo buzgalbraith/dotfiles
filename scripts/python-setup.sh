@@ -13,5 +13,3 @@ sudo apt-get install -y build-essential libssl-dev zlib1g-dev \
     libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 curl -fsSL https://pyenv.run | bash
 
-## install hatch and poetry for python virtualization 
-python3 -m pip install poetry hatch 

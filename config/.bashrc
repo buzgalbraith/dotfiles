@@ -123,12 +123,6 @@ alias ds="systemctl --user start docker-desktop"
 alias ds="systemctl --user start docker-desktop"
 ## setting edditor 
 export EDITOR=/usr/bin/vim
-## changing default bindings for fuzzy find 
-source /usr/share/doc/fzf/examples/key-bindings.bash
-## sourcing rust env 
-. "$HOME/.cargo/env"
-## broot set up 
-source $HOME/.config/broot/launcher/bash/br
 ## add go to path 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=${HOME}/go

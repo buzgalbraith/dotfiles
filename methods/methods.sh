@@ -40,7 +40,7 @@ function act() {
 function ssh_add(){
 	INPUT=$1
 	CUSTOM_ALIAS=$2
-	IDENTITY_FILE=${3:-~/.ssh/id_rsa.pub}
+	IDENTITY_FILE=${3:-~/.ssh/id_rsa}
 
 	if [[ -z "$INPUT" ]]; then
 	    echo "Usage: $0 user@hostname"

@@ -9,8 +9,8 @@ cd $pack_dir
 
 declare -A git_links=(
     ["commentary"]="https://tpope.io/vim/commentary.git" ## commentary for code commenting
-    ["ctrlp.vim"]="https://github.com/ctrlpvim/ctrlp.vim.git" ## fuzzy finder
-    ["ack.vim"]="https://github.com/mileszs/ack.vim.git" ## code search
+    ["ctrlp_vim"]="https://github.com/ctrlpvim/ctrlp.vim.git" ## fuzzy finder
+    ["ack_vim"]="https://github.com/mileszs/ack.vim.git" ## code search
     ["nerdtree"]="https://github.com/preservim/nerdtree.git" ## file explorer
     ["rose-pine"]="https://github.com/rose-pine/vim.git" ## rose-pine theme 
     ["ale"]="https://github.com/dense-analysis/ale.git" ## ale for linting 
@@ -20,6 +20,7 @@ declare -A git_links=(
     ["word-motion"]="https://github.com/chaoren/vim-wordmotion.git" ## sets the w action to respect _ and a few other quality of life changes
     ["spelunker"]="https://github.com/kamykn/spelunker.vim.git" ## better spell check, and spell check in code.
     ["vim-tmux-navigator"]="https://github.com/christoomey/vim-tmux-navigator.git" ## switch between vim and tmux panes with same keys
+    ["vim-easy-motion"]="https://github.com/easymotion/vim-easymotion.git" ## switch between vim and tmux panes with same keys
 )
 
 # ## install plugins 

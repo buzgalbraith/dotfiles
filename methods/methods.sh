@@ -1,14 +1,14 @@
 #!/bin/bash
 ## method for clearing vim swap files
 cswp() {
-    local files=()
-    mapfile -t files < <(find . -type f -name "*.sw[klmnop]")
+    local files
+    files=("${(@f)$(find . -type f -name "*.sw[klmnop]")}")
 
     if (( ${#files[@]} )); then
         echo "Found the following swap files:"
         printf '%s\n' "${files[@]}"
         printf -- '-%.0s' {1..100}; printf '\n'
-        read -r -p "Would you like to remove them (y/n): " remove
+        read -r "remove?Would you like to remove them (y/n): "
         if [[ "$remove" == "n" || "$remove" == "N" ]]; then
             echo "Keeping them."
         else
@@ -23,7 +23,8 @@ cswp() {
 }
 ## method for activating python virtual environments
 function act() {
-    local path
+    echo $local_path
+    local local_path
     local output
         if [[ -n "$VIRTUAL_ENV" ]]; then
         echo "Deactivating current virtual environment: $VIRTUAL_ENV"
@@ -31,9 +32,9 @@ function act() {
     fi
     output=$(python3 ~/.methods/python_methods/act.py)
     echo $output
-    path=$(echo "$output" | tail -n1 | awk '{print $NF}')  # get last word
-    if [ -e "$path" ]; then
-        source "$path"
+    local_path=$(echo "$output" | tail -n1 | awk '{print $NF}')  # get last word
+    if [ -e "$local_path" ]; then
+        source "$local_path"
     fi
 }
 ## short cut for adding to known hosts 

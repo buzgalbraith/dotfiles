@@ -1,6 +1,7 @@
 # Dotfile repo Ubuntu 24.04.2
 ## Branches 
 1. main - For main personal desktop 
+1. mac - for lab macbook
 1. msi-laptop - For MSI Laptop 
 1. remote-cli - For remote machines/HPC clusters. 
 ## Structure

@@ -46,6 +46,8 @@ set noerrorbells visualbell t_vb=
 " Enable mouse support. You should avoid relying on this too much, but it can
 " sometimes be convenient.
 set mouse+=a
+" this allows for using mouse to re-size vim splits
+set ttymouse=xterm2
 
 " unmap arrow keys
 nnoremap <Left>  :echoe "Use h"<CR>
@@ -132,3 +134,4 @@ nnoremap P O<Esc>p
 
 "" show 5 lines above or bellow cursor if possible
 set scrolloff=5 
+

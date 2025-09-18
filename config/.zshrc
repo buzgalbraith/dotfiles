@@ -112,9 +112,8 @@ compinit
 ## adding shortened alias for git
 alias g="git"
 ## adding an alias for starting docker desktop deamon 
-alias ds="systemctl --user start docker-desktop"
-## adding alias for starting docker-desktop deamon 
-alias ds="systemctl --user start docker-desktop"
+alias ds="open -a Docker"
+
 ## setting edditor 
 export EDITOR=/usr/bin/vim
 ## add go to path 

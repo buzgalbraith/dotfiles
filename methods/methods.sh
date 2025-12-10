@@ -1,14 +1,13 @@
 #!/bin/bash
 ## method for clearing vim swap files
 cswp() {
-    local files=()
-    mapfile -t files < <(find . -type f -name "*.sw[klmnop]")
-
+    local files
+    files=("${(@f)$(find . -type f -name "*.sw[klmnop]")}")
     if (( ${#files[@]} )); then
         echo "Found the following swap files:"
         printf '%s\n' "${files[@]}"
         printf -- '-%.0s' {1..100}; printf '\n'
-        read -r -p "Would you like to remove them (y/n): " remove
+        read -r "remove?Would you like to remove them (y/n): "
         if [[ "$remove" == "n" || "$remove" == "N" ]]; then
             echo "Keeping them."
         else
@@ -21,9 +20,24 @@ cswp() {
         echo "No swap files found in $(pwd)"
     fi
 }
+conda_act() {
+
+	__conda_setup="$($conda_home'/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+	if [ $? -eq 0 ]; then
+	    eval "$__conda_setup"
+	else
+	    if [ -f "$conda_home/etc/profile.d/conda.sh" ]; then
+		. "$conda_home/etc/profile.d/conda.sh"
+	    else
+		export PATH="$conda_home/bin:$PATH"
+	    fi
+	fi
+	unset __conda_setup
+}
 ## method for activating python virtual environments
 function act() {
-    local path
+    echo $local_path
+    local local_path
     local output
         if [[ -n "$VIRTUAL_ENV" ]]; then
         echo "Deactivating current virtual environment: $VIRTUAL_ENV"
@@ -31,9 +45,9 @@ function act() {
     fi
     output=$(python3 ~/.methods/python_methods/act.py)
     echo $output
-    path=$(echo "$output" | tail -n1 | awk '{print $NF}')  # get last word
-    if [ -e "$path" ]; then
-        source "$path"
+    local_path=$(echo "$output" | tail -n1 | awk '{print $NF}')  # get last word
+    if [ -e "$local_path" ]; then
+        source "$local_path"
     fi
 }
 ## short cut for adding to known hosts 
@@ -93,4 +107,50 @@ zenodo_pull() {
         curl -sL "$url" -o "${dir_name}/${filename}" || echo "Failed: $filename"
     done
     rm "$json_file"
+}
+
+## create the base env if not already present and activate it.
+base_env(){
+    base_env_path=~/.base_env/
+    if [ ! -e "$base_env_path" ]; then
+        echo "base_env not found at $base_env_path."
+        if command -v "uv" &> /dev/null; then
+            echo "creating with uv"
+            uv venv ~/.base_env
+            source ~/.base_env/bin/activate
+            uv pip install black pandas polars pylint
+            deactivate
+        elif python3 -c "import venv" 2>/dev/null; then
+            echo "creating with venv"
+            python3 -m venv ~/.base_env
+            ~/.base_env/bin/pip install black pandas polars pylint
+        else
+            echo "please either install venv or uv."
+        fi
+    fi
+    source ~/.base_env/bin/activate
+}
+
+# run black on a file before running git add
+gab() {
+    black_path=~/.base_env/bin/black
+    if [ ! -e "$black_path" ]; then
+        echo "black not found at $black_path."
+        base_env
+        deactivate
+    fi     
+    if [ -d "$1" ]; then
+        echo "running black on directory ${1}"
+        ~/.base_env/bin/black "$1"
+        echo "git adding ${1}"
+        git add "$1"
+    elif [[ "$1" == *.py ]]; then
+        echo "running black on ${1}"
+        ~/.base_env/bin/black "$1"
+        echo "git adding ${1}"
+        git add "$1"
+    else
+        echo "skipping black (not a .py file), git adding ${1}"
+        git add "$1"
+    fi
 }

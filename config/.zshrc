@@ -121,7 +121,8 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=${HOME}/go
 export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin
 
-
+## adding conda home to path
+export conda_home=/opt/homebrew/Caskroom/miniconda/base
 # add cuda to path
 export CUDA_HOME=/usr/local/cuda
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64

@@ -3,7 +3,6 @@
 cswp() {
     local files
     files=("${(@f)$(find . -type f -name "*.sw[klmnop]")}")
-
     if (( ${#files[@]} )); then
         echo "Found the following swap files:"
         printf '%s\n' "${files[@]}"
@@ -22,14 +21,15 @@ cswp() {
     fi
 }
 conda_act() {
-	__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+
+	__conda_setup="$($conda_home'/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 	if [ $? -eq 0 ]; then
 	    eval "$__conda_setup"
 	else
-	    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-		. "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+	    if [ -f "$conda_home/etc/profile.d/conda.sh" ]; then
+		. "$conda_home/etc/profile.d/conda.sh"
 	    else
-		export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+		export PATH="$conda_home/bin:$PATH"
 	    fi
 	fi
 	unset __conda_setup

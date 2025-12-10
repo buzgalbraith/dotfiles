@@ -115,15 +115,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-## adding alias for hatch and poetry
-alias hatch="python3 -m hatch"
-alias poetry="python3 -m poetry"
 ## adding shortened alias for git
 alias g="git"
-## adding an alias for starting docker desktop deamon 
-alias ds="systemctl --user start docker-desktop"
-## adding alias for starting docker-desktop deamon 
-alias ds="systemctl --user start docker-desktop"
 ## setting edditor 
 export EDITOR=/usr/bin/vim
 ## add go to path 
@@ -131,9 +124,23 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=${HOME}/go
 export PATH=/usr/local/go/bin:${PATH}:${GOPATH}/bin
 
-## add ~/.local/bin to path
-export PATH=${PATH}:~/.local/bin
 
+# add cuda to path
+export CUDA_HOME=/usr/local/cuda
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+export PATH=$PATH:$CUDA_HOME/bin
+# add llama cpp to path
+export PATH=$PATH:/home/buzgalbraith/workspace/self_host/llama.cpp/build/bin
+
+# explorer specific commands
+export gl=/projects/gyorilab
+alias gl="cd $gl"
+export UV_CACHE_DIR=${gl}/.cache/uv
+export conda_home=${gl}/miniconda3
+# alias for interactive job
+alias sri="srun --partition=short --nodes=1 --cpus-per-task=4 --pty /bin/bash"
+# alias for compute job
+alias src="srun --partition=short --nodes=1 --cpus-per-task=8 --pty /bin/bash"
 ## source file with helper methods 
 source ~/.methods/methods.sh
 

@@ -141,6 +141,8 @@ export conda_home=${gl}/miniconda3
 alias sri="srun --partition=short --nodes=1 --cpus-per-task=4 --pty /bin/bash"
 # alias for compute job
 alias src="srun --partition=short --nodes=1 --cpus-per-task=8 --pty /bin/bash"
+# squeu short cut
+alias sq="squeue -u $USER"
 ## source file with helper methods 
 source ~/.methods/methods.sh
 

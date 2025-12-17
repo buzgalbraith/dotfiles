@@ -154,3 +154,10 @@ gab() {
         git add "$1"
     fi
 }
+
+## slurm helper methods for getting details about recently run jobs
+sjbs() {
+    local DAYS="${1:-1}"	
+    echo $DAYS
+    sacct --format=JobID,JobName,Partition,State,Elapsed,Start,End,NodeList,ExitCode -S $(date -d "${DAYS} days ago" +%Y-%m-%d)
+}

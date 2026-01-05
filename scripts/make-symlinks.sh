@@ -10,9 +10,8 @@ declare -A FILES_TO_SYMLINK=(
     ["config/.Xmodmap"]=".Xmodmap"
     ["config/.tmux.conf"]=".tmux.conf"
     ["config/.vimrc"]=".vimrc"
-    ["config/vscode/settings.json"]=".config/Code/User/settings.json"
-    ["config/vscode/keybindings.json"]=".config/Code/User/keybindings.json"
-    ["config/hatch/config.toml"]=".config/hatch/config.toml"
+    ["config/vscode/settings.json"]="Library/Application Support/Code/User/settings.json"
+    ["config/vscode/keybindings.json"]="Library/Application Support/Code/User/keybindings.json"
     ["config/pypoetry/config.toml"]=".config/pypoetry/config.toml"
     ["methods"]=".methods"
 )
@@ -34,7 +33,12 @@ for SRC in "${!FILES_TO_SYMLINK[@]}"; do
     fi
 
     # Create symlink
-    ln -s "$SRC_PATH" "$DEST_PATH"
-    echo "Linked $SRC_PATH → $DEST_PATH"
+    if [[ "$SRC" == config/vscode/* ]]; then
+        ln "$SRC_PATH" "$DEST_PATH"  # hard link
+        echo "Hard linked $SRC_PATH → $DEST_PATH"
+    else
+        ln -s "$SRC_PATH" "$DEST_PATH"  # symlink
+        echo "Symlinked $SRC_PATH → $DEST_PATH"
+    fi
 done
 

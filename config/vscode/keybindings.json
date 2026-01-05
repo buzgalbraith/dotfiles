@@ -115,5 +115,17 @@
         "key": "ctrl+.",
         "command": "-problems.action.showQuickFixes",
         "when": "problemFocus"
+    },
+    {
+        "key": "shift+cmd+k",
+        "command": "workbench.action.closeAllEditors"
+    },
+    {
+        "key": "cmd+k cmd+w",
+        "command": "-workbench.action.closeAllEditors"
+    },
+    {
+        "key": "shift+cmd+m",
+        "command": "workbench.files.action.collapseExplorerFolders"
     }
 ]

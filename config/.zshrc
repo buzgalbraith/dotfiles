@@ -133,6 +133,11 @@ export PATH=$PATH:/home/buzgalbraith/workspace/self_host/llama.cpp/build/bin
 ## add the black from base env as cmd
 alias black='/Users/buzgalbraith/.base_env/bin/black'
 
+## get credentials token etc from private file 
+if [ -f ~/.creds ]; then
+    . ~/.creds
+fi
+
 ## source file with helper methods 
 source ~/.methods/methods.sh
 

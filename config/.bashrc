@@ -136,6 +136,11 @@ export PATH=$PATH:$CUDA_HOME/bin
 # add llama cpp to path
 export PATH=$PATH:/home/buzgalbraith/workspace/self_host/llama.cpp/build/bin
 
+## get credentials token etc from private file
+if [ -f ~/.creds ]; then
+    . ~/.creds
+fi
+
 ## source file with helper methods 
 source ~/.methods/methods.sh
 

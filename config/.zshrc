@@ -133,6 +133,18 @@ export PATH=$PATH:/home/buzgalbraith/workspace/self_host/llama.cpp/build/bin
 ## add the black from base env as cmd
 alias black='/Users/buzgalbraith/.base_env/bin/black'
 
+
+## adds optional private library dependencies ##
+if [ -d /Users/buzgalbraith/.python_path_modules ]; then
+    for dir in $(find /Users/buzgalbraith/.python_path_modules/ -d -maxdepth 1 -mindepth 1)     # list directories in the form "/tmp/dirname/"
+    do
+        dir=${dir%*/}      # remove the trailing "/"
+        export PYTHONPATH=${dir}:${PYTHONPATH}
+    done
+
+fi
+
+
 ## get credentials token etc from private file 
 if [ -f ~/.creds ]; then
     . ~/.creds

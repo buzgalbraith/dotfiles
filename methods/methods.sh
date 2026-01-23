@@ -1,5 +1,5 @@
 #!/bin/bash
-## method for clearing vim swap files
+## method for clearing vim swap files ## 
 cswp() {
     local files
     files=("${(@f)$(find . -type f -name "*.sw[klmnop]")}")
@@ -20,6 +20,7 @@ cswp() {
         echo "No swap files found in $(pwd)"
     fi
 }
+## activate base conda env, don't want it activated all the time ## 
 conda_act() {
 
 	__conda_setup="$($conda_home'/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -34,7 +35,7 @@ conda_act() {
 	fi
 	unset __conda_setup
 }
-## method for activating python virtual environments
+##Search a directory for a python virtual environment activate it and de-activate any currently active ones ## 
 function act() {
     echo $local_path
     local local_path
@@ -50,7 +51,7 @@ function act() {
         source "$local_path"
     fi
 }
-## short cut for adding to known hosts 
+## short cut for adding to known hosts ##
 function ssh_add(){
 	INPUT=$1
 	CUSTOM_ALIAS=$2
@@ -84,7 +85,7 @@ EOF
 		    echo "Added SSH config entry for $SHORT_HOST"
 	fi
 }
-## function to save a full zenodo directory 
+## function to save a full zenodo directory ## 
 zenodo_pull() {
     local record_id="$1"
     local json_file="zenodo_record_${record_id}.json"
@@ -109,7 +110,7 @@ zenodo_pull() {
     rm "$json_file"
 }
 
-## create the base env if not already present and activate it.
+## create the base env for python with venv if not already present and activate it. ##
 base_env(){
     base_env_path=~/.base_env/
     if [ ! -e "$base_env_path" ]; then
@@ -118,7 +119,7 @@ base_env(){
             echo "creating with uv"
             uv venv ~/.base_env
             source ~/.base_env/bin/activate
-            uv pip install black pandas polars pylint
+            uv pip install black pandas polars pylint mypy
             deactivate
         elif python3 -c "import venv" 2>/dev/null; then
             echo "creating with venv"
@@ -131,7 +132,7 @@ base_env(){
     source ~/.base_env/bin/activate
 }
 
-# run black on a file before running git add
+## run black on a file before running git add ## 
 gab() {
     black_path=~/.base_env/bin/black
     if [ ! -e "$black_path" ]; then
@@ -153,4 +154,12 @@ gab() {
         echo "skipping black (not a .py file), git adding ${1}"
         git add "$1"
     fi
+}
+## sorts and then diffs files ## 
+diffs() {
+        diff "${@:3}" <(sort "$1") <(sort "$2")
+}
+## kill all stopped jobs kind of buggy and will also kill this terminal ##
+jbkill() {
+    kill -9 `jobs -ps`
 }

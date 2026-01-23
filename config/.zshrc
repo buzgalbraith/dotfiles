@@ -130,8 +130,10 @@ export PATH=$PATH:$CUDA_HOME/bin
 # add llama cpp to path
 export PATH=$PATH:/home/buzgalbraith/workspace/self_host/llama.cpp/build/bin
 
-## add the black from base env as cmd
+## add the black and other basics from base env as cmd ## 
 alias black='/Users/buzgalbraith/.base_env/bin/black'
+alias pylint='/Users/buzgalbraith/.base_env/bin/pylint'
+alias mypy='/Users/buzgalbraith/.base_env/bin/mypy'
 
 
 ## adds optional private library dependencies ##

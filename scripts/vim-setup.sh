@@ -21,6 +21,7 @@ declare -A git_links=(
     ["spelunker"]="https://github.com/kamykn/spelunker.vim.git" ## better spell check, and spell check in code.
     ["vim-tmux-navigator"]="https://github.com/christoomey/vim-tmux-navigator.git" ## switch between vim and tmux panes with same keys
     ["vim-easy-motion"]="https://github.com/easymotion/vim-easymotion.git" ## switch between vim and tmux panes with same keys
+    ["vim-gitgutter"]="https://github.com/airblade/vim-gitgutter.git" ## git integration with vim, diff files while working 
 )
 
 # ## install plugins 
@@ -43,6 +44,7 @@ if [ ! -f ~/.local/bin/ack ]; then
 	mkdir -p ~/.local/bin/
 	curl https://beyondgrep.com/ack-v3.8.1 > ~/.local/bin/ack && chmod 0755 ~/.local/bin/ack
 fi
-
-## install pylint package
-# python3 -m pip install pylint --user
+## set up base env if not already there used for linters
+source ~/.methods/methods.sh
+base_env
+deactivate

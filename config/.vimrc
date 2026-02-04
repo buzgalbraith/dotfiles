@@ -80,14 +80,17 @@ nnoremap <leader>p :execute 'CtrlP ' . input('CtrlP directory: ', '', 'dir')<CR>
 
 "ale setup 
 let g:ale_linters = {
-\   'python': [ 'pylint']
+\   'python': ['ruff', 'mypy']
 \}
-" " Enable automatic fixing on save (optional)
-let g:ale_fix_on_save = 1
-" " Only lint on save (not every keystroke)
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_save = 1
+let g:ale_fixers = {
+\   'python': ['ruff', 'ruff_format']
+\}
+"" these are installed in `scripts/vim_setup.sh` 
+let g:ale_python_mypy_executable = $HOME."/.base_env/bin/mypy"
+let g:ale_python_pylint_executable = $HOME.'/.base_env/bin/pylint'
+let g:ale_python_ruff_executable = $HOME.'/.base_env/bin/ruff'
 
+let g:ale_python_ruff_options = '--select E,W,F,I,UP,ANN'
 " setting color theme 
 set background=light
 colorscheme rosepine

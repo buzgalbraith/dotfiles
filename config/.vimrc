@@ -82,11 +82,18 @@ nnoremap <leader>p :execute 'CtrlP ' . input('CtrlP directory: ', '', 'dir')<CR>
 
 "ale setup 
 let g:ale_linters = {
-\   'python': ['mypy', 'pylint']
+\   'python': ['pyright', 'ruff', 'mypy']
 \}
-"" these are installed in `scripts/vim_setup.sh` 
-let g:ale_python_mypy_executable = $HOME."/.base_env/bin/mypy"
-let g:ale_python_pylint_executable = $HOME.'/.base_env/bin/pylint'
+let g:ale_fixers = {
+\   'python': ['ruff', 'ruff_format']
+\}
+" allow auto completion through ale 
+let g:ale_completion_enabled = v:true
+let g:ale_completion_delay = 20
+" hover over variables to see type annotations
+set updatetime=750
+
+
 
 " setting color theme 
 set background=light

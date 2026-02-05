@@ -134,7 +134,8 @@ export PATH=$PATH:/home/buzgalbraith/workspace/self_host/llama.cpp/build/bin
 alias black='/Users/buzgalbraith/.base_env/bin/black'
 alias pylint='/Users/buzgalbraith/.base_env/bin/pylint'
 alias mypy='/Users/buzgalbraith/.base_env/bin/mypy'
-
+alias ruff='/Users/buzgalbraith/.base_env/bin/ruff'
+alias pyright='/Users/buzgalbraith/.base_env/bin/pyright'
 
 ## adds optional private library dependencies ##
 if [ -d /Users/buzgalbraith/.python_path_modules ]; then
@@ -156,3 +157,5 @@ fi
 source ~/.methods/methods.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+## claude code adding local bin
+export PATH="$HOME/.local/bin:$PATH"

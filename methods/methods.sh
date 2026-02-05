@@ -119,12 +119,12 @@ base_env(){
             echo "creating with uv"
             uv venv ~/.base_env
             source ~/.base_env/bin/activate
-            uv pip install black pandas polars pylint mypy
+            uv pip install black pandas polars pylint mypy ruff
             deactivate
         elif python3 -c "import venv" 2>/dev/null; then
             echo "creating with venv"
             python3 -m venv ~/.base_env
-            ~/.base_env/bin/pip install black pandas polars pylint
+            ~/.base_env/bin/pip install black pandas polars pylint ruff
         else
             echo "please either install venv or uv."
         fi
@@ -162,4 +162,50 @@ diffs() {
 ## kill all stopped jobs kind of buggy and will also kill this terminal ##
 jbkill() {
     kill -9 `jobs -ps`
+}
+## uv venv overvride installs some linting packages ## 
+uv() {
+    if [ "$1" = "venv" ]; then
+        # Run original uv venv with all arguments
+        command uv venv "${@:2}"
+        # Install baseline packages
+	uv pip install mypy pyright ruff ipython black jedi
+    else
+        # Pass through to real uv for other commands
+        command uv "$@"
+    fi
+}
+
+## vibe coded method to copy file contents to system clipboard ## 
+copy() {
+    if [ -z "$1" ]; then
+        echo "Usage: copy <file>"
+        return 1
+    fi
+
+    if [ ! -f "$1" ]; then
+        echo "Error: File '$1' not found"
+        return 1
+    fi
+
+    # Detect OS and use appropriate clipboard command
+    if command -v pbcopy > /dev/null; then
+        # macOS
+        cat "$1" | pbcopy
+    elif command -v xclip > /dev/null; then
+        # Linux with xclip
+        cat "$1" | xclip -selection clipboard
+    elif command -v xsel > /dev/null; then
+        # Linux with xsel
+        cat "$1" | xsel --clipboard --input
+    elif command -v wl-copy > /dev/null; then
+        # Wayland
+        cat "$1" | wl-copy
+    else
+        echo "Error: No clipboard utility found"
+        echo "Install: xclip (X11), wl-clipboard (Wayland), or use macOS pbcopy"
+        return 1
+    fi
+
+    echo "✓ Copied contents of '$1' to clipboard"
 }

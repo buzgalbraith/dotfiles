@@ -175,7 +175,10 @@ uv() {
         command uv "$@"
     fi
 }
-
+## copy variable to system clipboard
+copy_var() {
+    echo -n $1 | pbcopy
+}
 ## vibe coded method to copy file contents to system clipboard ## 
 copy() {
     if [ -z "$1" ]; then

@@ -73,7 +73,7 @@ autoload -Uz colors && colors
 # Define prompt (ps1 equivelent)
 PROMPT='%F{green}%n%F{blue}@%F{green}%m%F{blue}:%F{green}%~%F{red}>%F{yellow}>%F{blue}>%f'
 
-alias ls='ls -G'
+alias ls='ls -aG'
 alias tree='tree -C'
 #alias dir='dir --color=auto'
 #alias vdir='vdir --color=auto'
@@ -153,9 +153,19 @@ if [ -f ~/.creds ]; then
     . ~/.creds
 fi
 
+# JAVA setup
+export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@21/include"
+
+
 ## source file with helper methods 
 source ~/.methods/methods.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 ## claude code adding local bin
 export PATH="$HOME/.local/bin:$PATH"
+
+
+## obsedian clio
+export PATH="$PATH:/Applications/Obsidian.app/Contents/MacOS"
+

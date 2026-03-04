@@ -139,8 +139,10 @@ export UV_CACHE_DIR=${gl}/.cache/uv
 export conda_home=${gl}/miniconda3
 # alias for interactive job
 alias sri="srun --partition=short --nodes=1 --cpus-per-task=4 --pty /bin/bash"
-# alias for compute job
+# alias for cpu compute job
 alias src="srun --partition=short --nodes=1 --cpus-per-task=16 --pty /bin/bash"
+# alias for gpu compute job
+alias srgpu="srun --partition=gpu-interactive --nodes=1 --gres=gpu:v100-sxm2:1 --cpus-per-task=2 --mem=10GB --time=02:00:00 --pty /bin/bash"
 # squeu short cut
 alias sq="squeue -u $USER"
 ## source file with helper methods 

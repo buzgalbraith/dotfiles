@@ -9,6 +9,8 @@
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	logp = log --graph --format='%cn %h %s'
+	; Helper for diffing across branches, has a completion helper in methods as well
+	bdiff = "!f() { git diff \"$1\":\"$2\" \"$2\";}; f"
 [init]
 	defaultBranch = main
 [filter "lfs"]

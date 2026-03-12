@@ -212,3 +212,16 @@ copy() {
 
     echo "✓ Copied contents of '$1' to clipboard"
 }
+
+
+## this is a helper function for completion in the `git diffb command` defined in `~/.gitconfig` 
+_git-bdiff() {
+    case $CURRENT in
+        2)
+            local -a branches
+            branches=(${(f)"$(git branch --all --format='%(refname:short)')"})
+            _describe 'branch' branches
+            ;;
+        3) _files ;;
+    esac
+}

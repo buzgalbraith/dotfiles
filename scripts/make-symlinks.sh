@@ -13,6 +13,7 @@ declare -A FILES_TO_SYMLINK=(
     ["config/vscode/settings.json"]="Library/Application Support/Code/User/settings.json"
     ["config/vscode/keybindings.json"]="Library/Application Support/Code/User/keybindings.json"
     ["config/pypoetry/config.toml"]=".config/pypoetry/config.toml"
+    ["config/hammerspoon_init.lua"]=".hammerspoon/init.lua"
     ["methods"]=".methods"
 )
 

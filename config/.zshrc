@@ -148,10 +148,9 @@ if [ -d /Users/buzgalbraith/.python_path_modules ]; then
 fi
 
 ## Open Hammerspoon if available ## 
-if [[ -d "/Applications/Hammerspoon.app" ]]; then
-    open -a Hammerspoon
+if [[ -d "/Applications/Hammerspoon.app" ]] && ! pgrep -x "Hammerspoon" > /dev/null; then
+    open -ga Hammerspoon
 fi
-
 ## get credentials token etc from private file 
 if [ -f ~/.creds ]; then
     . ~/.creds

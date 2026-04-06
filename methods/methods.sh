@@ -119,7 +119,7 @@ base_env(){
             echo "creating with uv"
             uv venv ~/.base_env
             source ~/.base_env/bin/activate
-            uv pip install black pandas polars pylint mypy ruff
+            uv pip install black pandas polars pylint mypy ruff ipython
             deactivate
         elif python3 -c "import venv" 2>/dev/null; then
             echo "creating with venv"

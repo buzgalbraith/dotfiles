@@ -50,6 +50,11 @@ vim.o.spell = true
 vim.o.spelllang = 'en_us'
 vim.keymap.set('n', '<leader>.', 'z=', { desc = 'Spell suggestions' })
 
+-- ignore the more option -- 
+vim.o.more = false
+
+-- set it so the cursor shows the specific column
+vim.o.cursorcolumn = true
 -- change word boundries
 vim.opt.iskeyword:append({ '_', '-' })
 

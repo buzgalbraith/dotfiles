@@ -73,10 +73,11 @@ autoload -Uz colors && colors
 # Define prompt (ps1 equivelent)
 PROMPT='%F{green}%n%F{blue}@%F{green}%m%F{blue}:%F{green}%~%F{red}>%F{yellow}>%F{blue}>%f'
 
+# add PID to jobs by default 
+alias jobs='jobs -l'
+# listing files aliasing
 alias ls='ls -aG'
 alias tree='tree -C'
-#alias dir='dir --color=auto'
-#alias vdir='vdir --color=auto'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'

@@ -2,7 +2,8 @@
 
 
 -- set base color scheme
-vim.cmd.colorscheme 'habamax'
+vim.cmd.colorscheme 'catppuccin-nvim'
+-- vim.cmd.colorscheme 'habamax'
 -- line numbering 
 vim.o.number = true
 -- relative line numbering

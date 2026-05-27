@@ -12,6 +12,7 @@ declare -A FILES_TO_SYMLINK=(
     ["config/.vimrc"]=".vimrc"
     ["config/vscode/settings.json"]=".config/Code/User/settings.json"
     ["config/vscode/keybindings.json"]=".config/Code/User/keybindings.json"
+    ["config/nvim"]=".config/nvim"
     ["config/hatch/config.toml"]=".config/hatch/config.toml"
     ["config/pypoetry/config.toml"]=".config/pypoetry/config.toml"
     ["methods"]=".methods"

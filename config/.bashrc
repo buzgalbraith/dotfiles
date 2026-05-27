@@ -133,19 +133,32 @@ export PATH=$PATH:$CUDA_HOME/bin
 export PATH=$PATH:/home/buzgalbraith/workspace/self_host/llama.cpp/build/bin
 
 # explorer specific commands
-export gl=/projects/gyorilab
+export gl=/projects/gyorilab/buz
 alias gl="cd $gl"
+export msrc=/scratch/$USER
+alias msrc="cd $msrc"
 export UV_CACHE_DIR=${gl}/.cache/uv
 export conda_home=${gl}/miniconda3
 # alias for interactive job
-alias sri="srun --partition=short --nodes=1 --cpus-per-task=4 --pty /bin/bash"
+alias sri="srun --partition=short --pty /bin/bash"
 # alias for cpu compute job
 alias src="srun --partition=short --nodes=1 --cpus-per-task=16 --pty /bin/bash"
 # alias for gpu compute job
 alias srgpu="srun --partition=gpu-interactive --nodes=1 --gres=gpu:v100-sxm2:1 --cpus-per-task=2 --mem=10GB --time=02:00:00 --pty /bin/bash"
 # squeu short cut
 alias sq="squeue -u $USER"
+alias sqs="squeue -u $USER --start"
+alias sacct="sacct --format=JobID,JobName,Elapsed,AllocCPUS,CPUTime,Partition,State"
 ## source file with helper methods 
 source ~/.methods/methods.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+## source rust
+# source "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
+## adding my bin to path 
+alias nvim='~/workspace/dotfiles/nvim-linux-x86_64/bin/nvim'
+# export PATH="$HOME/bin:$PATH"
+## add node for pyright 
+module load nodejs/v22.11.0

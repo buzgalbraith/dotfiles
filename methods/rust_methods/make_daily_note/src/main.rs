@@ -5,7 +5,7 @@ use chrono::{self};
 fn main() {
     let now = chrono::Local::now();
     let home = var("HOME").expect("~"); 
-    let note_location = Path::new(&home).join("workspace/notes/daily_notes").join(now.format("%y-%m-%d.md").to_string());
+    let note_location = Path::new(&home).join("workspace/notes/daily_notes").join(now.format("%Y-%m-%d.md").to_string());
     let file = OpenOptions::new()
         .write(true)
         .create_new(true) // will not over-write existing file 

@@ -51,6 +51,13 @@ function act() {
         source "$local_path"
     fi
 }
+## uses rust functionality to make a daily note
+function mdn(){
+    if [ ! -f "${HOME}/.methods/rust_methods/make_daily_note/target/release/make_daily_note" ] ; then 
+        cargo build --release --manifest-path "${HOME}/.methods/rust_methods/make_daily_note/Cargo.toml"
+    fi
+    "${HOME}/.methods/rust_methods/make_daily_note/target/release/make_daily_note"
+}
 ## short cut for adding to known hosts ##
 function ssh_add(){
 	INPUT=$1

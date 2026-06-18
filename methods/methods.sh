@@ -221,6 +221,14 @@ copy() {
 }
 
 
+## quick connect to aws instance 
+awsc(){
+    hostname=$1
+    key_file=${2-"$HOME/.ssh/buzgalbraith.pem"}
+    username=${3-"ubuntu"}
+    echo "Running 'ssh -i ${key_file} ${username}@${hostname}'" 
+    ssh -i ${key_file} ${username}@${hostname}
+}
 ## this is a helper function for completion in the `git diffb command` defined in `~/.gitconfig` 
 _git-bdiff() {
     case $CURRENT in

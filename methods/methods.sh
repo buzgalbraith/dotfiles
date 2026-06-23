@@ -161,3 +161,11 @@ sjbs() {
     echo $DAYS
     sacct --format=JobID,JobName,Partition,State,Elapsed,Start,End,NodeList,ExitCode -S $(date -d "${DAYS} days ago" +%Y-%m-%d)
 }
+
+## helper method for getting the most recent log files
+function mrl() {
+    local nids=${1:-1}
+    nids=$((nids * 2)) # get both out and err file
+    local dir=${2:-"./logs"}
+    find "$dir" ./logs  -type 'f' -printf '%T+ %p\n' | sort -r | head -n "$nids"
+}

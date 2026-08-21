@@ -220,6 +220,14 @@ copy() {
     echo "✓ Copied contents of '$1' to clipboard"
 }
 
+## change antrhopic login to lab instead of O-auth
+lab_claude(){
+    anthropic_creds_path="$HOME/.creds_anthropic"
+    if [ -e "$anthropic_creds_path" ]; then
+        source "$anthropic_creds_path"
+    fi
+
+}
 
 ## quick connect to aws instance 
 awsc(){
